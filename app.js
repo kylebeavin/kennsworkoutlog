@@ -9,9 +9,12 @@ User.sync()
 app.use(bodyParser.json());
 
 app.use(require('./middleware/headers'));
+//Creating a user
+app.use('/api/user', require("./routes/user"));
+// logging in a user
+app.use('/api/login', require('./routes/session'));
 
-app.use('/api/user', require("./routes/user"))
-app.use('/api/login', require('./routes/session'))
+
 app.use('/api/test', function(req, res){
 	res.send("<h1>Hello World</h1>" +
 			"<h2> it's a small world</h2>");

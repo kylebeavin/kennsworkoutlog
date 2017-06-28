@@ -13,18 +13,17 @@ router.post('/', function(req, res){
 		passwordhash : bcrypt.hashSync(pass, 10)
 	}).then(
 		function createSuccess(user){
-			var token = jwt.sign({id: user.id}, "i_am_secret", {expiresIn: 60*60*24})
+			var token = jwt.sign({id:user.id}, "i_am_secret", {expiresIn: 60*60*24})
 			res.json({
 				user : user,
 				message: 'create',
-				sessionToken : token
+				sessionToken: token
 			})
 		},
 		function createError(err){
 			res.send(500, err.message)
 		}
 	)
-	console.log(User)
 })
 
 module.exports = router;

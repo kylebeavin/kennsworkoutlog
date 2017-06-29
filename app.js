@@ -16,6 +16,7 @@ app.use('/api/user', require("./routes/user"));
 // logging in a user
 app.use('/api/login', require('./routes/session'));
 //localhost:3000/api/login/
+app.use('/api/definition', require('./routes/definition'));
 
 app.use('/api/test', function(req, res){
 	res.send("<h1>Hello World</h1>" +

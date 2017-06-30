@@ -5,8 +5,7 @@ var bodyParser = require('body-parser');
 var seq = require('./db.js');
 var User = seq.import('./models/user');
 
-User.sync()
-
+seq.sync()
 app.use(bodyParser.json());
 
 app.use(require('./middleware/headers'));

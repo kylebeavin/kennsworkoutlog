@@ -8,7 +8,7 @@ router.post('/', function(req, res){
 	var description = req.body.definition.desc;
 	var logType = req.body.definition.type;
 	var owner = req.user.id;
-
+	// console.log(req.User)
 	Definition.create({
 			description: description, 
 			logType : logType, 

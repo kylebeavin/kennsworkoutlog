@@ -40,4 +40,52 @@ router.get('/', function(req, res){
 		)
 })
 
+
+router.delete('/', function(req, res){
+	var dataID = req.body.log.id;
+
+	Log.destroy({ where: {id: dataID }}).then(
+		function deleteLogSuccess(data){
+			res.send("You removed a log!");
+		},
+		function deleteLogError(err){
+			res.send(500, err.message)
+		}
+	)
+})
+
+router.get('/:id', function(req, res){
+	var dataID = req.params.id;
+	console.log(req.params)
+	Log.findOne({ where: {id: dataID }}).then(
+		function getSuccess(data){
+			res.json(data)
+		},
+
+		function getError(err){
+			res.send(500, err.message)
+		}
+	)
+})
+
+router.put('/', function(req,res){
+	var description = req.body.log.description;
+	var result = req.body.log.result; 
+	var data = req.body.log.id;
+	var definition = req.body.log.def;
+
+	Log.update({ 
+		description : description, 
+		result : result, 
+		def : definition
+	}, {where: {id : data}}).then(
+		function updateSuccess(updateData){
+			res.json(updateData)
+		},
+		function updateError(err){
+			res.send(500, err.message)
+		}
+	)
+})
+
 module.exports = router;

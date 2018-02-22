@@ -1,12 +1,12 @@
 require('dotenv').config();
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
-var seq = require('./db.js');
-var User = seq.import('./models/user');
+require('./db.js');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
 
-seq.sync()
-app.use(bodyParser.json());
+app.use('/uploads', express.static(__dirname + '/uploads'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '50mb'}));
 
 app.use(require('./middleware/headers'));
 app.use(require('./middleware/validate-session'));
@@ -18,11 +18,6 @@ app.use('/api/login', require('./routes/session'));
 app.use('/api/definition', require('./routes/definition'));
 
 app.use('/api/log', require('./routes/log'));
-
-app.use('/api/test', function(req, res){
-	res.send("<h1>Hello World</h1>" +
-			"<h2> it's a small world</h2>");
-})
 
 app.listen(3000, function(){
 	console.log("app is open on 3000!");

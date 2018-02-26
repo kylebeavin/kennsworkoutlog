@@ -19,7 +19,7 @@ app.use('/api/definition', require('./routes/definition'));
 
 app.use('/api/log', require('./routes/log'));
 
-app.listen(3000, function(){
+app.listen(process.env.PORT, function(){
 	console.log("app is open on 3000!");
 })
 

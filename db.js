@@ -1,9 +1,11 @@
 var Sequelize = require('sequelize');
+console.log(typeof process.env.DATABASE_URL)
 
-var seq = new Sequelize(process.env.PGDBPASS, {
+var seq = new Sequelize(process.env.DATABASE_URL, {
 	dialect: 'postgres',
-	port:5432
+	port: 5432
 });
+
 
 seq.authenticate().then(
 	function(){

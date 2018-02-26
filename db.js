@@ -1,7 +1,6 @@
 var Sequelize = require('sequelize');
 
-var seq = new Sequelize('workoutlog', 'postgres', 'k12323',{
-	host : "localhost",
+var seq = new Sequelize(process.env.PGDBPASS {
 	dialect: 'postgres',
 	port:5432
 });

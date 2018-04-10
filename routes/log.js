@@ -1,7 +1,6 @@
 var router = require('express').Router();
 var sequelize = require('../db.js');
 var User = sequelize.import('../models/user.js');
-var Definition = sequelize.import('../models/definition.js');
 var Log = sequelize.import('../models/log.js');
 
 router.post('/', function(req, res){
@@ -41,8 +40,8 @@ router.get('/', function(req, res){
 })
 
 
-router.delete('/', function(req, res){
-	var dataID = req.body.log.id;
+router.delete('/:id', function(req, res){
+	var dataID = req.params.id;
 
 	Log.destroy({ where: {id: dataID }}).then(
 		function deleteLogSuccess(data){
@@ -56,7 +55,6 @@ router.delete('/', function(req, res){
 
 router.get('/:id', function(req, res){
 	var dataID = req.params.id;
-	console.log(req.params)
 	Log.findOne({ where: {id: dataID }}).then(
 		function getSuccess(data){
 			res.json(data)
@@ -68,10 +66,10 @@ router.get('/:id', function(req, res){
 	)
 })
 
-router.put('/', function(req,res){
+router.put('/:id', function(req,res){
 	var description = req.body.log.description;
 	var result = req.body.log.result; 
-	var data = req.body.log.id;
+	var data = req.params.id;
 	var definition = req.body.log.def;
 
 	Log.update({ 

@@ -51,8 +51,9 @@ router.post('/', function(req, res){
 	)
 })
 
-router.post('/upload-image', upload.single('user-img'), (req,res) => {
-
+router.post('/upload-image', upload.single('image'), (req,res) => {
+	console.log(req.body)
+	console.log(req.file);
 	User.findOne({ where: { id: req.user.id } }).then(
 		(user) => {
 			const _user = user;

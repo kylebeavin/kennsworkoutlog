@@ -2,7 +2,6 @@ var router = require('express').Router();
 var sequelize = require('../db.js');
 var User = sequelize.import('../models/user.js');
 var Log = sequelize.import('../models/log.js');
-
 router.post('/', function(req, res){
 	var description = req.body.log.description;
 	var result = req.body.log.result;

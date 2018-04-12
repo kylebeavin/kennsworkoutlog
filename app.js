@@ -19,8 +19,8 @@ app.use('/api/definition', require('./routes/definition'));
 
 app.use('/api/log', require('./routes/log'));
 
-app.listen(process.env.PORT, function(){
-	console.log(`app is running on ${process.env.PORT}`);
-})
+app.listen(4000, () => {
+	console.log('app is listening on local host 4000');
+});
 
 //Challenge go to postman, create a new user, then login with that user

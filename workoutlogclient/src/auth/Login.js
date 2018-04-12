@@ -18,7 +18,7 @@ class Login extends Component {
 
     handleSubmit = (event) => {
         //Post - fetch
-        fetch("http://localhost:3000/api/login", {
+        fetch("http://localhost:4000/api/login", {
             method: 'POST',
             body: JSON.stringify({user: this.state}),
             headers: new Headers({
@@ -26,9 +26,11 @@ class Login extends Component {
             })
         })
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => this.props.setToken(data.sessionToken))
         //save our token
         //prevent default
+        event.preventDefault();
+
     }
 
     render(){

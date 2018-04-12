@@ -1,7 +1,7 @@
 var Sequelize = require('sequelize');
 console.log(typeof process.env.DATABASE_URL)
 
-var seq = new Sequelize(process.env.DATABASE_URL, {
+var seq = new Sequelize('workOutLog','postgres','killab513', {
 	dialect: 'postgres',
 	port: 5432
 });

@@ -7,7 +7,6 @@ import {
     Nav,
     NavItem,
     NavLink,
-   
 } from 'reactstrap';
 
 class SiteBar extends Component {
@@ -33,7 +32,7 @@ class SiteBar extends Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink href="/components/">SignIn</NavLink>
+                                <NavLink onClick={this.props.logout}>logout</NavLink>
                             </NavItem>
                             <NavItem>
                             </NavItem>
